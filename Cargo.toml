@@ -1,0 +1,29 @@
+[package]
+name = "dispatcher-service"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+name = "dispatcher"
+
+[[bin]]
+path = "src/main.rs"
+name = "liquent-dispatcher"
+
+[[bin]] # Bin to run the HelloWorld gRPC client
+name = "helloworld-client"
+path = "src/client.rs"
+
+
+[dependencies]
+crossbeam = "0.8.4"
+anyhow = "1.0.94"
+tracing = "0.1.41"
+tonic = {version = "0.12.3"}
+prost = "0.13.4"
+bytes = "1.9.0"
+tokio = { version = "1.43.0", features = ["rt-multi-thread", "macros"]}
+
+[build-dependencies]
+tonic-build = { version = "0.12.3"}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package queue;
+
+message Chunk {
+  uint64 checkpoint = 1;
+  repeated AccountInfo accounts = 2;
+}
+
+message AccountInfo {
+  string id = 1;
+}
+
+service Queue {
+  rpc PublishChunk (PublishChunkRequest) returns (PublishChunkResponse);
+  rpc PopChunk (PopChunkRequest) returns (PopChunkResponse);
+}
+
+message PublishChunkRequest {
+  Chunk chunk = 1;
+}
+
+message PublishChunkResponse {
+  bool success = 1;
+}
+
+message PopChunkRequest {
+}
+
+message PopChunkResponse {
+  Chunk chunk = 1;
+}
