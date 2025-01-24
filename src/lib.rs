@@ -1,3 +1,3 @@
-// pub mod types;
-pub mod queue;
 pub mod protobuf;
+pub mod queue;
+pub mod service;

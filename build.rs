@@ -1,5 +1,4 @@
 use std::fs;
-use std::path::PathBuf;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Collect all *.proto paths from the `proto/` folder
