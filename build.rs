@@ -1,6 +1,11 @@
-use std::fs;
+use std::{env, fs};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    if env::var("SKIP_PROTOC").is_ok() {
+        println!("cargo:warning=Skipping protoc compilation");
+        return Ok(());
+    }
+
     // Collect all *.proto paths from the `proto/` folder
     let mut proto_files = Vec::new();
     for entry in fs::read_dir("proto")? {

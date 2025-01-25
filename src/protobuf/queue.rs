@@ -30,8 +30,8 @@ pub mod publishing_queue_client {
         clippy::wildcard_imports,
         clippy::let_unit_value,
     )]
-    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
+    use tonic::codegen::http::Uri;
     #[derive(Debug, Clone)]
     pub struct PublishingQueueClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -184,10 +184,10 @@ pub mod publishing_queue_server {
         >;
         /// Server streaming response type for the ConsumeChunk method.
         type ConsumeChunkStream: tonic::codegen::tokio_stream::Stream<
-            Item=std::result::Result<super::ConsumeChunkResponse, tonic::Status>,
-        >
-        + std::marker::Send
-        + 'static;
+                Item = std::result::Result<super::ConsumeChunkResponse, tonic::Status>,
+            >
+            + std::marker::Send
+            + 'static;
         async fn consume_chunk(
             &self,
             request: tonic::Request<super::ConsumeChunkRequest>,
