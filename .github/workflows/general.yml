@@ -1,16 +1,13 @@
 name: Rust
 
 on:
-  # NB: this differs from the book's project!
-  # These settings allow us to run this specific CI pipeline for PRs against
-  # this specific branch (a.k.a. book chapter).
   push:
     branches:
-      - main
+      - master
   pull_request:
     types: [ opened, synchronize, reopened ]
     branches:
-      - main
+      - master
 
 env:
   CARGO_TERM_COLOR: always
@@ -40,5 +37,19 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
           components: clippy
+      - name: Install protocol buffer compiler
+        run: sudo apt-get install protobuf-compiler
       - name: Linting
         run: cargo clippy -- -D warnings
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install protocol buffer compiler
+        run: sudo apt-get install protobuf-compiler
+      - name: Run tests
+        run: cargo test
