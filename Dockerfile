@@ -17,6 +17,7 @@ ENV SKIP_PROTOC=true
 RUN cargo build --release --bin tomka
 
 FROM debian:bookworm-slim AS runtime
+LABEL org.opencontainers.image.source=https://github.com/tompaka/tomka
 WORKDIR /app
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends openssl ca-certificates \
