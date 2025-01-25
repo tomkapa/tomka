@@ -9,7 +9,7 @@ message Message {
 
 // Publish a chunk
 message PublishChunkRequest {
-  Message chunk = 1;
+  Message message = 1;
 }
 
 message PublishChunkResponse {}
@@ -17,15 +17,10 @@ message PublishChunkResponse {}
 message ConsumeChunkRequest {}
 
 message ConsumeChunkResponse {
-  Message chunk = 1;
+  Message message = 1;
 }
 
 service PublishingQueue {
   rpc PublishChunk(PublishChunkRequest) returns (PublishChunkResponse);
-  rpc ConsumeChunk(ConsumeChunkRequest) returns (ConsumeChunkResponse);
-}
-
-service ResultQueue {
-  rpc PublishChunk(PublishChunkRequest) returns (PublishChunkResponse);
-  rpc ConsumeChunk(ConsumeChunkRequest) returns (ConsumeChunkResponse);
+  rpc ConsumeChunk(ConsumeChunkRequest) returns (stream ConsumeChunkResponse);
 }
