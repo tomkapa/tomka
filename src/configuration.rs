@@ -10,6 +10,9 @@ pub struct ApplicationSettings {
     pub host: String,
     #[serde(deserialize_with = "deserialize_number_from_string")]
     pub grpc_port: u16,
+    /// The port for the HTTP server. It's used for health checks.
+    #[serde(deserialize_with = "deserialize_number_from_string")]
+    pub http_port: u16,
 }
 
 /// The possible runtime environment for our application.

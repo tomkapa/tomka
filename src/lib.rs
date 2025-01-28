@@ -1,4 +1,5 @@
 pub mod configuration;
+pub mod health_check;
 pub mod protobuf;
 pub mod queue;
 pub mod service;
