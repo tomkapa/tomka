@@ -15,19 +15,23 @@ name = "tomka"
 [dependencies]
 anyhow = "1.0.94"
 tracing = "0.1.41"
-tracing-subscriber = {version = "0.3.19", features = ["env-filter", "registry"]}
+tracing-subscriber = { version = "0.3.19", features = [
+    "env-filter",
+    "registry",
+] }
 tracing-log = "0.2.0"
 tracing-bunyan-formatter = "0.3.10"
 thiserror = "2.0.11"
-tonic = {version = "0.12.3"}
+tonic = { version = "0.12.3" }
 prost = "0.13.4"
-tokio = { version = "1.43.0", features = ["rt-multi-thread", "macros"]}
+tokio = { version = "1.43.0", features = ["rt-multi-thread", "macros"] }
 crossbeam = "0.8.4"
 futures = "0.3.31"
 async-stream = "0.3.6"
 serde = "1.0.217"
 serde-aux = "4.5.0"
 config = "0.15.6"
+axum = "0.8.1"
 
 [build-dependencies]
-tonic-build = { version = "0.12.3"}
+tonic-build = { version = "0.12.3" }
